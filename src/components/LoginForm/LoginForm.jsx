@@ -5,6 +5,8 @@ import { logIn } from '../../redux/auth/operations';
 
 export default function LoginForm() {
   const dispatch = useDispatch();
+  const isLoading = useSelector(selectIsLoading);
+
   const handleSubmit = (values, actions) => {
     console.log(values);
     dispatch(logIn(values));
@@ -28,7 +30,7 @@ export default function LoginForm() {
           Password
           <Field type='password' name='password' />
         </label>
-        <button type='submit'>Log In</button>
+        <button type='submit' disabled={isLoading}>Log In</button>
       </Form>
     </Formik>
   );
