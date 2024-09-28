@@ -4,14 +4,14 @@ import './App.css'
 // import SearchBox from '../SearchBox/SearchBox'
 // import ContactList from '../ContactList/ContactList'
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchContacts } from '../../redux/contactsOps'
+import { fetchContacts } from '../../redux/contacts/operations'
 import { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
 import { selectIsRefreshing } from '../../redux/auth/selectors';
 import RestrictedRoute from '../UserMenu/RestrictedRoute';
 import PrivateRoute from '../UserMenu/PrivateRoute';
 
-const HomePage = lazy(() => import("../../pages/HomePage"));
+const HomePage = lazy(() => import('../../pages/HomePage'));
 const RegisterPage = lazy(() => import("../../pages/RegistrationPage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage"));
 const ContactsPage = lazy(() => import("../../pages/ContactsPage"));
@@ -34,7 +34,7 @@ export default function App() {
     //   <SearchBox />
     //   <ContactList />
     // </div>
-<Layout>
+    <Layout>
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />

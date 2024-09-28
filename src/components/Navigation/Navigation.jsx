@@ -4,10 +4,10 @@ import { NavLink } from "react-router-dom";
 export default function Navigation() {
   return (
     <nav>
-      <NavLink className={css.link} to="/">
+      <NavLink to="/">
         Home
       </NavLink>
-      <NavLink className={css.link} to="/contacts">
+      <NavLink to="/contacts">
       Contacts
       </NavLink>
     </nav>

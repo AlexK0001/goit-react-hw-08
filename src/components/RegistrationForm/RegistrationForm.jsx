@@ -20,16 +20,16 @@ export default function RegistrationForm() {
       }}
       onSubmit={handleSubmit}
     >
-      <Form className={css.form} autoComplete='off'>
-        <label className={css.label}>
+      <Form autoComplete='off'>
+        <label>
           Username
           <Field type='text' name='name' />
         </label>
-        <label className={css.label}>
+        <label>
           Email
           <Field type='email' name='email' />
         </label>
-        <label className={css.label}>
+        <label>
           Password
           <Field type='password' name='password' />
         </label>
