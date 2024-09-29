@@ -1,6 +1,6 @@
 import DocumentTitle from "../../components/DocumentTitle/DocumentTitle";
 import ContactForm from "../../components/ContactForm/ContactForm";
-import SearchBar from "../../components/SearchBar/SearchBar";
+import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactList from "../../components/ContactList/ContactList";
 import { useDispatch, useSelector } from "react-redux";
 import { selectIsLoggedIn } from "../../redux/auth/selectors";
@@ -22,7 +22,7 @@ export default function ContactsPage() {
         <ContactForm />
         <div>
           {!isLoading && <p>Loading...</p>}
-          <SearchBar />
+          <SearchBox />
           <ContactList />
         </div>
       </div>
