@@ -1,9 +1,11 @@
-import { Helmet } from "react-helmet-async";
+import { Helmet, HelmetProvider } from "react-helmet-async";
 
 export default function DocumentTitle({ children }) {
   return (
-    <Helmet>
-      <title>{children}</title>
-    </Helmet>
+    <HelmetProvider>
+      <Helmet>
+        <title>{children}</title>
+      </Helmet>
+    </HelmetProvider>
   );
 }

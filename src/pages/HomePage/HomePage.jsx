@@ -6,7 +6,7 @@ export default function HomePage() {
     <div>
       <DocumentTitle>Home</DocumentTitle>
       <h1>Welcome to the home page of phonebook app</h1>
-      <p>Deveped by Ihor Mikheyev</p>
+      <p>Deveped by AlexK0001</p>
       <p>2024</p>
     </div>
   );
