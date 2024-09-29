@@ -13,7 +13,7 @@ import RestrictedRoute from '../UserMenu/RestrictedRoute';
 import PrivateRoute from '../UserMenu/PrivateRoute';
 
 const HomePage = lazy(() => import('../../pages/HomePage/HomePage'));
-const RegisterPage = lazy(() => import("../../pages/RegistrationPage/RegistrationPage"));
+const RegistrationPage = lazy(() => import("../../pages/RegistrationPage/RegistrationPage"));
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
 const ContactsPage = lazy(() => import("../../pages/ContactsPage/ContactsPage"));
 const NotFoundPage = lazy(() => import("../../pages/NotFoundPage/NotFoundPage"));
@@ -33,7 +33,7 @@ export default function App() {
       <Suspense fallback={null}>
         <Routes>
           <Route path="/" element={<HomePage />} />
-          <Route path="/register" element={<RestrictedRoute component={RegisterPage} redirectTo="/" />} />
+          <Route path="/register" element={<RestrictedRoute component={RegistrationPage} redirectTo="/" />} />
           <Route path="/login" element={<RestrictedRoute component={LoginPage} redirectTo="/contacts" />} />
           <Route path="/contacts" element={<PrivateRoute component={ContactsPage} redirectTo="/login" />} />
           <Route path="*" element={<NotFoundPage />} />
