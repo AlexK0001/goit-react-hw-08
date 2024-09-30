@@ -21,7 +21,7 @@ export default function App() {
   const isRefreshing =  useSelector(selectIsRefreshing);
 
   useEffect(() => {
-    dispatch(fetchContacts());
+    dispatch(refreshUser());
   }, [dispatch]);
 
   return isRefreshing ? (
