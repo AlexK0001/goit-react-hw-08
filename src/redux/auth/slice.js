@@ -16,38 +16,39 @@ const initialState = {
 const authSlice = createSlice({
     name: 'auth',
     initialState,
-    extraReducers: builder => {
+    extraReducers: (builder) => {
       builder
         .addCase(register.fulfilled, (state, action) => {
           state.user = action.payload.user;
           state.token = action.payload.token;
           state.isLoggedIn = true;
         })
-  
         .addCase(logIn.fulfilled, (state, action) => {
           state.user = action.payload.user;
           state.token = action.payload.token;
           state.isLoggedIn = true;
         })
-        .addCase(logOut.fulfilled, () => {
+        .addCase(logOut.fulfilled, (state) => {
           return initialState;
         })
+        
         .addCase(refreshUser.pending, (state) => {
-            state.isRefreshing = true;
-          })
-        .addCase(refreshUser.fulfilled, (state, action) => {
-            state.user = action.payload;
-            state.isRefreshing = false;
-            state.isLoggedIn = true;
+          state.isRefreshing = true;
         })
-  
+        .addCase(refreshUser.fulfilled, (state, action) => {
+          state.user = action.payload;
+          state.isLoggedIn = true;
+          state.isRefreshing = false;
+        })
+        .addCase(refreshUser.rejected, (state) => {
+          state.isRefreshing = false;
+        })
         .addMatcher(isAnyOf(register.pending, logIn.pending), state => {
           state.isLoading = true;
         })
-        .addMatcher(isAnyOf(register.rejected, logIn.rejected), (state, action) => {
-          state.isLoading = false;
-          state.isError = action.payload;
-        });
+          .addMatcher(isAnyOf(register.rejected, logIn.rejected), (state, action) => {
+            state.isLoading = false;
+            state.isError = action.payload;});
     },
   });
   
