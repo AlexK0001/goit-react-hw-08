@@ -10,7 +10,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storage from "redux-persist/lib/storage";
-import tasksReducer from "./contacts/slice";
+import contactsReducer from "./contacts/slice";
 import authReducer from "./auth/slice";
 import filterReducer from "./filters/slice"
 
@@ -26,7 +26,7 @@ const persistedAuthReducer = persistReducer(
 export const store = configureStore({
     reducer: {
         auth: persistedAuthReducer,
-        tasks: tasksReducer,
+        contacts: contactsReducer,
         filters: filterReducer,
       },
       middleware: (getDefaultMiddleware) =>

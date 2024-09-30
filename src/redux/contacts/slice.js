@@ -12,7 +12,7 @@ export const selectFilteredContacts = createSelector(
   )
 );
 const initialState ={
-   items: [],
+   contacts: [],
    loading: false,
    error: null
   }
