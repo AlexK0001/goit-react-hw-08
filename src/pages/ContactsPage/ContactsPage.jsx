@@ -3,18 +3,20 @@ import ContactForm from "../../components/ContactForm/ContactForm";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import ContactList from "../../components/ContactList/ContactList";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsLoggedIn } from "../../redux/auth/selectors";
+
 import { fetchContacts } from "../../redux/contacts/operations";
 import { useEffect } from "react";
-// import css from "./ContactsPage.module.css";
+import { getIsLoading } from "../../redux/contacts/selectors";
 
 export default function ContactsPage() {
   const dispatch = useDispatch();
-  const isLoading = useSelector(selectIsLoggedIn);
+
+  const isLoading = useSelector(getIsLoading);
 
   useEffect(() => {
     dispatch(fetchContacts());
   }, [dispatch]);
+
   return (
     <>
       <DocumentTitle>Your phonebook</DocumentTitle>

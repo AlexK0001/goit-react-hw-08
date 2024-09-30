@@ -1,21 +1,23 @@
-import { createSlice, createSelector } from '@reduxjs/toolkit';
-import { fetchContacts, addContact, deleteContact } from './operations';
-// import { logOut } from '../auth/operations';
+import { createSlice, createSelector } from "@reduxjs/toolkit";
+import { fetchContacts, addContact, deleteContact } from "./operations";
+import { logOut } from '../auth/operations';
 
 export const selectContacts = (state) => state.contacts.items;
 export const selectFilter = (state) => state.filters.name;
 
 export const selectFilteredContacts = createSelector(
   [selectContacts, selectFilter],
-  (contacts, filter) => contacts?.filter(contact =>
-    contact.name?.toLowerCase().includes(filter?.toLowerCase())
-  )
+  (contacts, filter) =>
+    contacts.filter((contact) =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    )
 );
-const initialState ={
-   contacts: [],
-   loading: false,
-   error: null
-  }
+const initialState = {
+  items: [],
+  loading: false,
+  error: null,
+  isLoading: false,
+};
 
 function handlePending(state) {
   state.isLoading = true;
@@ -38,16 +40,16 @@ const contactsSlice = createSlice({
         state.error = null;
         state.items = action.payload;
       })
-      .addCase(fetchContacts.rejected, handleRejected);
-    builder
+      .addCase(fetchContacts.rejected, handleRejected)
+
       .addCase(addContact.pending, handlePending)
       .addCase(addContact.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
         state.items.push(action.payload);
       })
-      .addCase(addContact.rejected, handleRejected);
-    builder
+      .addCase(addContact.rejected, handleRejected)
+
       .addCase(deleteContact.pending, handlePending)
       .addCase(deleteContact.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -57,7 +59,9 @@ const contactsSlice = createSlice({
         );
         state.items.splice(index, 1);
       })
-      .addCase(deleteContact.rejected, handleRejected);
+      .addCase(deleteContact.rejected, handleRejected).addCase(logOut.fulfilled, () => {
+        return initialState;
+      })
   },
 });
 
