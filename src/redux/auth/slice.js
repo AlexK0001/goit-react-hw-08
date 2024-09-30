@@ -53,3 +53,5 @@ const authSlice = createSlice({
   });
   
   export default authSlice.reducer;
+
+  // someuser@mail.com

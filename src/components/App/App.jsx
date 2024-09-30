@@ -1,9 +1,7 @@
 import { useEffect } from 'react';
 import './App.css';
 import Layout from "../Layout/Layout";
-// import ContactForm from '../ContactForm/ContactForm'
-// import SearchBox from '../SearchBox/SearchBox'
-// import ContactList from '../ContactList/ContactList'
+import { refreshUser } from '../../redux/auth/operations';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchContacts } from '../../redux/contacts/operations';
 import { lazy, Suspense } from "react";
